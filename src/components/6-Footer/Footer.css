@@ -1,0 +1,37 @@
+footer.flex {
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+footer.flex ul {
+    display: flex;
+    gap: 20px;
+    padding-left: 0;
+    list-style: none;
+}
+
+footer.flex ul li a,
+footer.flex p {
+    color: var(--subTitle);
+    font-size: 11px;
+    text-decoration: none;
+}
+
+footer.flex ul li a:hover {
+    color: var(--mainColor);
+}
+
+@media (max-width: 700px) {
+    footer.flex {
+        flex-direction: column;
+        line-height: 2rem;
+        text-align: center;
+        gap: 10px;
+    }
+
+    footer.flex ul {
+        justify-content: center;
+    }
+}

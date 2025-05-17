@@ -1,0 +1,305 @@
+/*==========================
+file contains:
+============================
+1-Header Design
+2-Navbar Desgin
+3-Mode Design
+4-Menu Design
+5-Icons Buttons
+6-Madia query (Responsive Design)
+*/
+
+
+/*******Header Design******/
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 150vw;
+  height: 5rem;
+  z-index: 9999;
+  color: #fffbff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  box-sizing: border-box;
+  margin: 0;
+        
+        /* box-shadow: 5px 5px 20px #fffbff; */
+    }
+/*******Navbar Design******/
+    header .navLogo{
+       width: 12rem; 
+       height: 12rem;
+    }
+    .dark header .Logo{
+        filter: brightness(0) invert(1); 
+    }
+    /* header nav{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--bgNav);
+        border: 2px solid var(--line);
+        border-radius: 25px;
+        padding: 5px 15px;
+        margin: auto;
+        box-shadow: 2px 2px 10px rgba(51, 48, 49, 0.685);
+    }
+      */
+    header.flex{
+        justify-content: space-between;
+    }
+    header ul{
+        gap: 15px;
+        align-items: center;
+    
+    }
+    header button{
+        color: var(--title);
+        opacity: 0.9;
+        font-size: 0.9rem;
+    }
+    header button:hover{
+        color: var(--mainColor);
+        opacity: 0.8;
+        font-size: 0.92rem;
+        border: 1px solid gray;
+        padding: 5px 12px;
+        /* background-color: var(--bgNav); */
+        border-radius: 10px;
+    }
+
+/**************Mode-Menu***************/
+   /**************Mode-Menu***************/
+.navmenu {
+    display: none;
+    background-color: rgba(20, 23, 32, 1); /* Solid dark blue-black */
+    color: white; /* White text for all content */
+}
+
+.fixed {
+    position: fixed;
+    inset: 0;
+    z-index: 11;
+    background-color: rgba(20, 23, 32, 0.9); /* Dark overlay with slight transparency */
+}
+
+@keyframes mymove {
+    0% { scale: 0; }
+    70% { scale: 1.1; }
+    100% { scale: 1; }
+}
+
+header .fixed ul.model {
+    animation: mymove 0.5s 1;
+    border: 1px solid var(--line);
+    width: 70%;
+    margin: auto;
+    margin-top: 3rem;
+    padding: 1rem 3rem;
+    background-color: rgba(20, 23, 32, 1); /* Matching dark background */
+    border-radius: 25px;
+    color: white; /* White text */
+}
+
+.model li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white divider */
+    color: white; /* White text */
+}
+
+.model li:last-child {
+    border-bottom: none;
+}
+
+.model li:first-child {
+    text-align: end;
+    border-bottom: none;
+    padding: 0;
+    margin-bottom: -1rem;
+}
+
+/* Ensure all links in the menu are white */
+.model a, 
+.model button, 
+.model li {
+    color: white !important;
+}
+
+/* Hover effects */
+.model a:hover, 
+.model button:hover {
+    color: var(--mainColor) !important; 
+    opacity: 0.9;
+    border: 0;
+}
+
+/* التصميم الأساسي للأزرار داخل navbar */
+header button {
+  color: var(--title);
+  opacity: 0.9;
+  font-size: 0.9rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* تأثير hover عام */
+header button:hover {
+  color: var(--mainColor);
+  opacity: 0.8;
+  font-size: 0.92rem;
+  border: 1px solid gray;
+  padding: 5px 12px;
+  border-radius: 10px;
+}
+
+/* التصميم الخاص بالأزرار Login و Register */
+.btn-auth {
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  transition: 0.3s;
+  
+}
+
+/* زرار login */
+.login-btn {
+  background-color: #007bff;  /* أزرق */
+  color: white;
+  border-color: #007bff;
+  margin-right: 0.9rem;
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  color: white;
+}
+
+/* زرار register */
+.register-btn {
+  background-color: #28a745;  /* أخضر */
+  color: white;
+  border-color: #28a745;
+}
+
+.register-btn:hover {
+  background-color: #1e7e34;
+  border-color: #1e7e34;
+  color: white;
+}
+
+
+/**********Icons************/
+    header .icon-menu , header button.mode{
+        background-color: var(--bgNav);
+        width:2rem ;
+        height: 2rem;
+        color: rgb(189, 189, 189);
+        padding: 0.1rem ;
+        border-radius: 25px;
+        justify-content: center;
+        text-align: center;
+        box-shadow: 1px 1px 15px rgba(168, 168, 168, 0.568);
+        transition:0.3s ;
+    }
+    header button .icon-moon-stars{
+        font-size: 1.3rem;
+        color: cornsilk;
+    }
+    header button .icon-sun{
+        font-size: 1.1rem;
+        color: rgba(255, 166, 0, 0.822);
+    }
+    .icon-menu:hover , .mode:hover{
+        color: var(--title);
+        border: 0.1rem solid var(--line);
+        /* opacity: 0.8; */
+    }
+    .icon-clear{
+    font-size: 1.2rem;
+    transition: 0.2s; 
+    color: var(--subTitle);
+    }
+    .icon-menu .flex li a{
+        color: var(--subTitle);
+        }
+    .icon-clear:hover{
+        font-size: 1.5rem;
+        color: crimson;
+        rotate: 180deg;
+    }
+
+
+
+
+
+
+
+    /*******/
+    /* اجعل الـ header container يستخدم flex ويوزع المساحات */
+/* .container.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  height: 5rem;
+} */
+
+
+/* div اللي يحوي أزرار login/register وأيقونة المود */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* أزرار Login و Register مع تصميم مستقل */
+.btn-auth {
+  padding: 0.4rem 1rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* لون Login */
+.login-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+/* لون Register */
+.register-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.register-btn:hover {
+  background-color: #1e7e34;
+}
+
+
+/**********Responsive Design***********/
+
+
+    @media (max-width:800px) {
+        header nav{display: none;}
+        .navmenu{display: block;}
+    }
+    @media (min-width:750px) {
+        .fixed{display: none;} 
+    }
