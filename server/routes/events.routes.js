@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const Event = require('../models/Event');
+const Booking = require('../models/Booking');
 const { verifyToken } = require('../middleware/auth');
 
 // Get all events
@@ -18,6 +19,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const event = await Event.findById(req.params.id);
+    if (!event) return res.status(404).json({ error: 'Event not found' });
     res.json(event);
   } catch (err) {
     res.status(404).json({ error: 'Event not found' });
@@ -39,6 +41,7 @@ router.post('/', verifyToken, async (req, res) => {
 router.put('/:id', verifyToken, async (req, res) => {
   try {
     const updatedEvent = await Event.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedEvent) return res.status(404).json({ error: 'Event not found' });
     res.json(updatedEvent);
   } catch (err) {
     res.status(400).json({ error: 'Failed to update event' });
@@ -48,18 +51,29 @@ router.put('/:id', verifyToken, async (req, res) => {
 // Delete event (Admin only)
 router.delete('/:id', verifyToken, async (req, res) => {
   try {
-    await Event.findByIdAndDelete(req.params.id);
+    const deletedEvent = await Event.findByIdAndDelete(req.params.id);
+    if (!deletedEvent) return res.status(404).json({ error: 'Event not found' });
     res.json({ message: 'Event deleted' });
   } catch (err) {
     res.status(400).json({ error: 'Failed to delete event' });
   }
 });
 
-// Booking routes
+// Book an event
 router.post('/:id/book', verifyToken, async (req, res) => {
   try {
     const eventId = req.params.id;
     const { seats } = req.body;
+
+    const event = await Event.findById(eventId);
+    if (!event) return res.status(404).json({ error: 'Event not found' });
+
+    // Prevent duplicate booking by same user on same event
+    const existingBooking = await Booking.findOne({ event: eventId, user: req.user.id });
+    if (existingBooking) {
+      return res.status(400).json({ message: 'Event already booked' });
+    }
+
     const booking = new Booking({ event: eventId, user: req.user.id, seats });
     await booking.save();
     res.status(201).json(booking);
@@ -68,6 +82,7 @@ router.post('/:id/book', verifyToken, async (req, res) => {
   }
 });
 
+// Get bookings for an event
 router.get('/:id/bookings', verifyToken, async (req, res) => {
   try {
     const eventId = req.params.id;
@@ -79,4 +94,3 @@ router.get('/:id/bookings', verifyToken, async (req, res) => {
 });
 
 module.exports = router;
-

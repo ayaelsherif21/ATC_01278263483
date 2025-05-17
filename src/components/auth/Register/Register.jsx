@@ -1,11 +1,19 @@
-import React, { useState } from 'react';
-import './Register.css'
+import React, { useState, useEffect } from 'react';
+import './Register.css';
+
 export default function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => setSuccess(''), 4000); // Clear success highlight
+      return () => clearTimeout(timer);
+    }
+  }, [success]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,10 +33,7 @@ export default function Register() {
       } else {
         setSuccess('Registration successful! You can now login.');
         setError('');
-        // Optionally reset form:
-        setName('');
-        setEmail('');
-        setPassword('');
+        // Do NOT clear inputs — keep them filled
       }
     } catch (err) {
       setError('Something went wrong.');
@@ -38,34 +43,41 @@ export default function Register() {
 
   return (
     <div className="register-container">
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={e => setName(e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          required
-          minLength={6}
-        />
-        <button type="submit">Register</button>
-      </form>
-      {error && <p className="error-msg">{error}</p>}
-      {success && <p className="success-msg">{success}</p>}
+      <div className="register-card">
+        <h2 className="register-title">Create an Account</h2>
+        <form onSubmit={handleSubmit} className="register-form">
+          <input
+            type="text"
+            placeholder="Full Name"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            required
+            className={`register-input ${success ? 'input-success' : ''}`}
+          />
+          <input
+            type="email"
+            placeholder="Email Address"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+            className={`register-input ${success ? 'input-success' : ''}`}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+            minLength={6}
+            className={`register-input ${success ? 'input-success' : ''}`}
+          />
+          <button type="submit" className="register-button">
+            Register
+          </button>
+        </form>
+        {error && <p className="error-msg">{error}</p>}
+        {success && <p className="success-msg">{success}</p>}
+      </div>
     </div>
   );
 }

@@ -1,38 +1,87 @@
 .register-container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f7fa2d;
+  padding: 1rem;
+}
+
+.register-card {
+  background: white;
   max-width: 400px;
-  margin: 2rem auto;
-  padding: 1.5rem;
-  border: 1px solid #ccc;
+  width: 100%;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.register-title {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.register-input {
+  padding: 0.65rem 1rem;
+  font-size: 1rem;
+  border: 1.8px solid #ddd;
   border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.register-container input {
-  width: 100%;
-  padding: 0.6rem;
-  margin: 0.8rem 0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
+.register-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+  outline: none;
 }
 
-.register-container button {
-  width: 100%;
-  padding: 0.7rem;
-  background-color: #007bff;
-  border: none;
+/* Success styles */
+.input-success {
+  border-color: #16a34a !important; /* green */
+  box-shadow: 0 0 6px rgba(22, 163, 74, 0.7);
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%2316a34a" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M20.285 6.708l-11.39 11.38-5.672-5.67 1.415-1.414 4.256 4.257 9.975-9.98z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px 16px;
+}
+
+.register-button {
+    width: 30%;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  background-color: #2563eb;
   color: white;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
-  border-radius: 4px;
-  font-size: 1rem;
+  transition: background-color 0.25s ease;
+}
+
+.register-button:hover {
+  background-color: #1d4ed8;
 }
 
 .error-msg {
-  color: red;
-  margin-top: 0.8rem;
+  margin-top: 1rem;
+  color: #dc2626;
+  font-weight: 600;
+  text-align: center;
 }
 
 .success-msg {
-  color: green;
-  margin-top: 0.8rem;
+  margin-top: 1rem;
+  color: #16a34a;
+  font-weight: 600;
+  text-align: center;
 }

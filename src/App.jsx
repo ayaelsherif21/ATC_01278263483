@@ -5,12 +5,10 @@ import Footer from './components/6-Footer/Footer';
 
 
 // Lazy-loaded pages
-const Home = lazy(() => import('./components/Home/Home'));
-const Events = lazy(() => import('./components/3-Courses/Courses'));
-const EventDetails = lazy(() => import('./components/Events/EventDetails'));  
+const Events = lazy(() => import('./components/3-Courses/Events'));
 const Login = lazy(() => import('./components/auth/Login/Login'));
 const Register = lazy(() => import('./components/auth/Register/Register'));
-const MyBookings = lazy(() => import( './components/Booking/MyBookings'));
+const Booking = lazy(() => import( './components/3-Courses/Booking'));
 const AdminDashboard = lazy(() => import( './components/Admin/AdminDashboard'));
 const CreateEvent = lazy(() => import( './components/Admin/CreateEvent'));
 const EditEvent = lazy(() => import( './components/Admin/EditEvent'));
@@ -47,8 +45,8 @@ const shouldHideHeader = noHeaderPaths.some((path) => location.pathname === path
        <Routes>
           {/* <Route path="/" element={<Home />} /> */}
     <Route path="/" element={<Events />} />
-    <Route path="/:id" element={<EventDetails />} />
-    <Route path="/my-bookings" element={<MyBookings />} />
+    {/* <Route path="/:id" element={<EventDetails />} /> */}
+    <Route path="/my-bookings" element={<Booking />} />
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
