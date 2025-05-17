@@ -5,10 +5,10 @@ import Footer from './components/6-Footer/Footer';
 
 
 // Lazy-loaded pages
-const Events = lazy(() => import('./components/3-Courses/Events'));
+const Events = lazy(() => import('./components/2-Events/Events'));
 const Login = lazy(() => import('./components/auth/Login/Login'));
 const Register = lazy(() => import('./components/auth/Register/Register'));
-const Booking = lazy(() => import( './components/3-Courses/Booking'));
+const Booking = lazy(() => import( './components/2-Events/Booking'));
 const AdminDashboard = lazy(() => import( './components/Admin/AdminDashboard'));
 const CreateEvent = lazy(() => import( './components/Admin/CreateEvent'));
 const EditEvent = lazy(() => import( './components/Admin/EditEvent'));
